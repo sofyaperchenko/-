@@ -21,7 +21,8 @@ namespace WpfApp6
         private Random random;
 
         private int balance; 
-        private const int BetAmount = 10; 
+        private const int BetAmount = 10;
+        private const int JackpotReward = 50;
         public MainWindow()
              
         {
@@ -48,6 +49,12 @@ namespace WpfApp6
             int total = die1 + die2 + die3; 
 
             ResultTextBlock.Text = $"Сумма: {total}.";
+
+            if (die1 == die2 && die2 == die3) 
+            {
+                balance += JackpotReward;
+                ResultTextBlock.Text += $" Вы выиграли джекпот {JackpotReward} единиц за комбинацию {die1}!";
+            }
 
             if (total >= 10) 
             {
